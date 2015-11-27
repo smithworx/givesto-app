@@ -98,7 +98,7 @@
       $scope.finished_input = [];
       $scope.submitting = false;
       $scope.parseable = true;
-      $scope.canned_input = 'John,Paul,George,Ringo\nElmo,Oscar,Big Bird,Bert\nLarry,Curly,Moe';
+      $scope.canned_input = 'John, Paul, George, Ringo\nElmo, Oscar, Big Bird, Bert\nLarry, Curly, Moe';
       //$scope.canned_input = '["John","Paul","George","Ringo"],\n["Elmo","Oscar","Big Bird","Bert"],\n["Larry","Curly","Moe"]';
       $scope.user_input = $scope.canned_input;
       $scope.result = {};
