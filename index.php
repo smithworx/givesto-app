@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <h1><i class="fa fa-gift"></i> Gift Giving Tool <i class="fa fa-gift"></i> <span class="tagline">Quickly generate gift-giving lists fairly and squarely</span></h1>
+    <h1><i class="fa fa-lg fa-fw fa-gift"></i> Gift Giving Tool <span class="tagline">Quickly generate gift-giving lists fairly and squarely</span></h1>
   </header>
 
 
@@ -78,11 +78,11 @@
         <span ng-hide="!parseable">
           <button class="btn btn-link" ng-click="go()" title="Randomize List"><i class="fa fa-lg fa-refresh"></i> </button> 
           <button class="btn btn-link" ng-click="download()" title="Download as CSV"><i class="fa fa-lg fa-download"></i> </button>
-          <span>Randomly Generated: {{timestamp | date:'M/d/yy h:mm:ss a'}}</span>
+          <span style="font-size: .8em">Gift Giving List Randomly Generated: {{timestamp | date:'M/d/yy h:mm:ss a'}}</span>
         </span>
 
 
-        <span class="credit"><a href="http://m.smithworx.com"><i class="fa fa-heart fa-lg fa-fw"></i>Matt Smith</a></span>
+        <span class="credit"><a href="http://m.smithworx.com"><i class="fa fa-heart fa-lg fa-fw"></i>Matt Smith</a> <a href="http://github.com/smithworx/givesto-app"><i class="fa fa-lg fa-fw fa-github-square" style="color: #64E986; margin-left: 20px; font-size: 1.8em;"></i></a></span>
       </footer>
 
     </div>
