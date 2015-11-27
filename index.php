@@ -31,14 +31,21 @@
 
       <!-- Nav tabs -->
       ( Style: 
-      <a href="#r-table" onclick="return false;" aria-controls="profile" role="tab" data-toggle="tab">Table</a>
-      | <a href="#r-text" onclick="return false;" aria-controls="messages" role="tab" data-toggle="tab">Text</a>
-      | <a href="#r-seqdia" onclick="return false;" aria-controls="settings" role="tab" data-toggle="tab">Seqdia</a>
+      <a href="#r-text" onclick="return false;" aria-controls="text" role="tab" data-toggle="tab">Text</a>
+      | <a href="#r-table" onclick="return false;" aria-controls="table" role="tab" data-toggle="tab">Table</a>
+      | <a href="#r-seqdia" onclick="return false;" aria-controls="seqdia" role="tab" data-toggle="tab">Seqdia</a>
       )
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="r-table">
+        <div role="tabpanel" class="tab-pane active" id="r-text">
+
+          <div ng-repeat="(key,value) in result">
+            <b>{{key}}</b> gives to <b>{{value}}</b>
+          </div>
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="r-table">
 
           <table>
             <tr><th>Giver</th><th>Recipient</th></tr>
@@ -46,13 +53,6 @@
               <td>{{key}}</td><td>{{value}}</td>
             </tr>
           </table>
-
-        </div>
-        <div role="tabpanel" class="tab-pane" id="r-text">
-
-          <div ng-repeat="(key,value) in result">
-            <b>{{key}}</b> gives to <b>{{value}}</b>
-          </div>
 
         </div>
         <div role="tabpanel" class="tab-pane" id="r-seqdia">

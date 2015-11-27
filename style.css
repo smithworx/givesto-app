@@ -68,9 +68,9 @@ h2 {
 .editor { 
   width: 40%;
   min-width: 400px;
-  padding: 5px;
+  padding: 15px;
   height: 90%;
-  font-size: 16px;
+  font-size: 1.2em;
 }
 
 textarea.editor  {
