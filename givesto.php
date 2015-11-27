@@ -24,7 +24,7 @@ function generate_gives_to($group_list, $fancy_print = true, $attempt = 0){
 				}
 			}
 			$k = array_rand($possible_recipients);
-			$givesto[$person] = $possible_recipients[$k];
+			$givesto[trim($person)] = trim($possible_recipients[$k]);
 			$recipients[] = $possible_recipients[$k];
 			unset($possible_recipients[$k]);
 		}
@@ -47,7 +47,7 @@ function fancy_print($givesto){
 
 function flatten(array $array) {
     $return = array();
-    array_walk_recursive($array, function($a) use (&$return) { $return[] = trim($a); });
+    array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
     return $return;
 }
 
