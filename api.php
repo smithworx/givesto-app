@@ -2,22 +2,12 @@
 
 include('givesto.php');
 
-//$_GET['input'] = "[['John','Paul','George','Ringo'],['Elmo','Oscar','Big Bird','Bert'],['Larry','Curly','Moe']]";
-/*$a = [['John','Paul','George','Ringo'],['Elmo','Oscar','Big Bird','Bert'],['Larry','Curly','Moe']];
-$b = json_encode($a);
-print_r($b);
-print_r(json_decode($b));*/
+$groups = explode("\n", $_GET['input']);
+$group_list = [];
+foreach($groups as $k => $group_string){
+	$group_list[$k] = explode(",", $group_string);
+}
 
-
-$input = "[".str_replace("'",'"',$_GET['input'])."]";
-
-$group_list = json_decode($input);
-/*
-print_r("\n\n\nGET['input']: ");
-print_r($_GET['input']);
-print_r("\n\n\ngroup_list\n\n\n");
-print_r($group_list);
-print_r("\n\n\n");*/
 if(is_null($group_list)){
 	// bad input
 	http_response_code(400);

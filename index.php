@@ -18,7 +18,7 @@
 
   <div id="main" ng-controller="InputController">
 
-    
+
     <div class="form-group editor-wrapper">
       <h2 style="display: inline-block">Groups</h2> <span class="description">( enter grouped lists of people... just like the example )</span>
       <textarea class="editor" ng-change="go()" id="user_input" ng-class="{'unparseable': !parseable}" ng-model="user_input" rows="5" style="width: 100%;" placeholder="">
@@ -28,7 +28,7 @@
 
     <div id="results" ng-if="finished_input.length">
       <h2 style="display: inline-block">Giving List</h2>
-      
+
       <!-- Nav tabs -->
       ( Style: 
       <a href="#r-table" onclick="return false;" aria-controls="profile" role="tab" data-toggle="tab">Table</a>
@@ -98,7 +98,8 @@
       $scope.finished_input = [];
       $scope.submitting = false;
       $scope.parseable = true;
-      $scope.canned_input = '["John","Paul","George","Ringo"],\n["Elmo","Oscar","Big Bird","Bert"],\n["Larry","Curly","Moe"]';
+      $scope.canned_input = 'John,Paul,George,Ringo\nElmo,Oscar,Big Bird,Bert\nLarry,Curly,Moe';
+      //$scope.canned_input = '["John","Paul","George","Ringo"],\n["Elmo","Oscar","Big Bird","Bert"],\n["Larry","Curly","Moe"]';
       $scope.user_input = $scope.canned_input;
       $scope.result = {};
 
