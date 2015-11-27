@@ -47,7 +47,7 @@ function fancy_print($givesto){
 
 function flatten(array $array) {
     $return = array();
-    array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
+    array_walk_recursive($array, function($a) use (&$return) { $return[] = trim($a); });
     return $return;
 }
 
