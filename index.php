@@ -18,102 +18,96 @@
 
   <div id="main" ng-controller="InputController">
 
+    
+    <div class="form-group editor-wrapper">
+      <h2 style="display: inline-block">Groups</h2> <span class="description">( enter grouped lists of people... just like the example )</span>
+      <textarea class="editor" ng-change="go()" id="user_input" ng-class="{'unparseable': !parseable}" ng-model="user_input" rows="5" style="width: 100%;" placeholder="">
+      </textarea>
+    </div>
 
 
-
+    <div id="results" ng-if="finished_input.length">
+      <h2 style="display: inline-block">Giving List</h2>
       
-      <div class="form-group editor-wrapper">
-        <h2 style="display: inline-block">Groups</h2> <span class="description">( enter grouped lists of people... just like the example )</span>
-        <textarea class="editor" ng-change="go()" id="user_input" ng-class="{'unparseable': !parseable}" ng-model="user_input" rows="5" style="width: 100%;" placeholder="">
-        </textarea>
-          <!-- <button ng-click="go()" class="btn btn-lg" ng-class="{'btn-primary': parseable}" style="width: 100%; margin-top: 3px;" ng-hide="submitting">Submit</button>
-          <i class="fa fa-cog fa-spin fa-2x" style="color: #999; margin-top: 5px;" ng-show="submitting"></i> -->
+      <!-- Nav tabs -->
+      ( Style: 
+      <a href="#r-table" onclick="return false;" aria-controls="profile" role="tab" data-toggle="tab">Table</a>
+      | <a href="#r-text" onclick="return false;" aria-controls="messages" role="tab" data-toggle="tab">Text</a>
+      | <a href="#r-seqdia" onclick="return false;" aria-controls="settings" role="tab" data-toggle="tab">Seqdia</a>
+      )
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="r-table">
+
+          <table>
+            <tr><th>Giver</th><th>Recipient</th></tr>
+            <tr ng-repeat="(key,value) in result">
+              <td>{{key}}</td><td>{{value}}</td>
+            </tr>
+          </table>
+
         </div>
+        <div role="tabpanel" class="tab-pane" id="r-text">
 
-
-        <div id="results" ng-if="finished_input.length">
-          <h2 style="display: inline-block">Giving List</h2>
-          
-          <!-- Nav tabs -->
-          ( Style: 
-          <a href="#r-table" onclick="return false;" aria-controls="profile" role="tab" data-toggle="tab">Table</a>
-          | <a href="#r-text" onclick="return false;" aria-controls="messages" role="tab" data-toggle="tab">Text</a>
-          | <a href="#r-seqdia" onclick="return false;" aria-controls="settings" role="tab" data-toggle="tab">Seqdia</a>
-          )
-
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="r-table">
-
-              <table>
-                <tr><th>Giver</th><th>Recipient</th></tr>
-                <tr ng-repeat="(key,value) in result">
-                  <td>{{key}}</td><td>{{value}}</td>
-                </tr>
-              </table>
-
-            </div>
-            <div role="tabpanel" class="tab-pane" id="r-text">
-
-              <div ng-repeat="(key,value) in result">
-                <b>{{key}}</b> gives to <b>{{value}}</b>
-              </div>
-
-            </div>
-            <div role="tabpanel" class="tab-pane" id="r-seqdia">
-
-              <div ng-repeat="(key,value) in result">
-                <b>{{key}}</b>--><b>{{value}}</b>: gives to
-              </div>
-
-            </div>
+          <div ng-repeat="(key,value) in result">
+            <b>{{key}}</b> gives to <b>{{value}}</b>
           </div>
 
+        </div>
+        <div role="tabpanel" class="tab-pane" id="r-seqdia">
+
+          <div ng-repeat="(key,value) in result">
+            <b>{{key}}</b>--><b>{{value}}</b>: gives to
+          </div>
 
         </div>
+      </div>
 
-
-
-      <footer>
-        <span ng-hide="!parseable">
-          <button class="btn btn-link" ng-click="go()" title="Randomize List"><i class="fa fa-lg fa-refresh"></i> </button> 
-          <button class="btn btn-link" ng-click="download()" title="Download as CSV"><i class="fa fa-lg fa-download"></i> </button>
-          <span style="font-size: .8em">Gift Giving List Randomly Generated: {{timestamp | date:'M/d/yy h:mm:ss a'}}</span>
-        </span>
-
-
-        <span class="credit"><a href="http://m.smithworx.com"><i class="fa fa-heart fa-lg fa-fw"></i>Matt Smith</a> <a href="http://github.com/smithworx/givesto-app"><i class="fa fa-lg fa-fw fa-github-square" style="color: #64E986; margin-left: 20px; font-size: 1.8em;"></i></a></span>
-      </footer>
 
     </div>
 
 
-    <script type="text/javascript">
-      var myApp = angular.module('app', []);
 
-      function sortObject(o) {
-        var sorted = {}, key, a = [];
-        for (key in o) { if (o.hasOwnProperty(key)) { a.push(key); } }
+    <footer>
+      <span ng-hide="!parseable">
+        <button class="btn btn-link" ng-click="go()" title="Randomize List"><i class="fa fa-lg fa-refresh"></i> </button> 
+        <button class="btn btn-link" ng-click="download()" title="Download as CSV"><i class="fa fa-lg fa-download"></i> </button>
+        <span style="font-size: .8em">Gift Giving List Randomly Generated: {{timestamp | date:'M/d/yy h:mm:ss a'}}</span>
+      </span>
+
+
+      <span class="credit"><a href="http://m.smithworx.com"><i class="fa fa-heart fa-lg fa-fw"></i>Matt Smith</a> <a href="http://github.com/smithworx/givesto-app"><i class="fa fa-lg fa-fw fa-github-square" style="color: #64E986; margin-left: 20px; font-size: 1.8em;"></i></a></span>
+    </footer>
+
+  </div>
+
+
+  <script type="text/javascript">
+    var myApp = angular.module('app', []);
+
+    function sortObject(o) {
+      var sorted = {}, key, a = [];
+      for (key in o) { if (o.hasOwnProperty(key)) { a.push(key); } }
         a.sort();
-        for (key = 0; key < a.length; key++) { sorted[a[key]] = o[a[key]]; }
+      for (key = 0; key < a.length; key++) { sorted[a[key]] = o[a[key]]; }
         return sorted;
-      }
+    }
 
-      myApp.controller('InputController', function InputController($scope, $http, $location) {
-        $scope.finished_input = [];
-        $scope.submitting = false;
-        $scope.parseable = true;
-        $scope.num_groups = 5;
-        $scope.canned_input = '["John","Paul","George","Ringo"],\n["Elmo","Oscar","Big Bird","Bert"],\n["Larry","Curly","Moe"]';
-        $scope.user_input = $scope.canned_input;
-        $scope.result = {};
+    myApp.controller('InputController', function InputController($scope, $http, $location) {
+      $scope.finished_input = [];
+      $scope.submitting = false;
+      $scope.parseable = true;
+      $scope.canned_input = '["John","Paul","George","Ringo"],\n["Elmo","Oscar","Big Bird","Bert"],\n["Larry","Curly","Moe"]';
+      $scope.user_input = $scope.canned_input;
+      $scope.result = {};
 
-        $scope.go = function() {
-          if ($scope.user_input) {
+      $scope.go = function() {
+        if ($scope.user_input) {
 
-            $scope.submitting = true;
-            $http.get('api.php', {params: {'input':$scope.user_input}, cache: false}).
-            success(function(data, status, headers, config) {
+          $scope.submitting = true;
+          $http.get('api.php', {params: {'input':$scope.user_input}, cache: false}).
+          success(function(data, status, headers, config) {
               // this callback will be called asynchronously
               // when the response is available
               if($scope.canned_input!==$scope.user_input) {
@@ -127,7 +121,7 @@
               $scope.parseable = true;
               $('#user_input').focus();
             }).
-            error(function(data, status, headers, config) {
+          error(function(data, status, headers, config) {
               // called asynchronously if an error occurs
               // or server returns response with an error status.
               //console.log("ERROR");
