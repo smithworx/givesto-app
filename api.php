@@ -16,8 +16,8 @@ if(is_null($group_list)){
 
 $result = generate_gives_to($group_list, false);
 if($result===false) {
-	echo("Incomplete Solution - Try adding another group");
 	http_response_code(400);
+	echo("Incomplete Solution - Try adding another group");
 	exit();
 }
 

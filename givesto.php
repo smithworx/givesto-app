@@ -13,7 +13,7 @@ function generate_gives_to($group_list, $fancy_print = true, $attempt = 0){
 
 		$possible_recipients = array_diff(
 			flatten($possible_recipients),
-			$recipients);	
+			$recipients);
 
 		foreach($group as $k2=>$person){
 			if(empty($possible_recipients)){
@@ -50,7 +50,3 @@ function flatten(array $array) {
     array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
     return $return;
 }
-
-
-
-
