@@ -12,11 +12,11 @@ if(is_null($group_list)){
 	// bad input
 	http_response_code(400);
 	exit();
-} 
+}
 
 $result = generate_gives_to($group_list, false);
 if($result===false) {
-	console.log("Incomplete Solution - Try adding another group");
+	echo("Incomplete Solution - Try adding another group");
 	http_response_code(400);
 	exit();
 }
